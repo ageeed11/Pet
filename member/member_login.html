@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>會員登入</title>
+  <link rel="stylesheet" href="../css/all.min.css" />
+  <link rel="stylesheet" href="../css/animate.min.css" />
+  <link rel="stylesheet" href="../css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../css/color.css" />
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg sticky-top" style="background: #ead6bd">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-700 fs-2" href="../home/front_page.html">
+        <img src="../img/P0.png" alt="" style="width: 110px" /> 佩特天旅</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fw700">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="../home/Serving.html">服務項目</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="../room/room_R_show.html">房型介紹</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="../home/QA.html">住宿QA</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="../order/order_C.html">線上訂房</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" id="contropanel" style="display: none"
+              href="../order/order_R.html" target="_blank">後臺管理</a>
+          </li>
+        </ul>
+        <span class="text-primary fw-500 fs-5 me-2" id="login_member"></span>
+        <button class="btn btn-danger btn-sm" type="button" id="s2_logout_btn" style="display: none">
+          登出
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="cortainer">
+    <div class="row">
+      <div class="col-4 offset-4 mt-5">
+        <div class="card">
+          <div class="card-body">
+            <div class="mb-3 ">
+              <label for="login_email" class="form-text">Email</label>
+              <input type="email" id="login_email" name="login_email" class="form-control" />
+            </div>
+            <div class="mb-3">
+              <label for="login_password" class="form-text">密碼</label>
+              <input type="password" id="login_password" name="login_password" class="form-control" />
+            </div>
+            <div class="d-flex">
+              <a class="btn btn-outline-warning ms-3" href="member_querypasswod.html">忘記密碼</a>
+              <a class="btn btn-outline-warning ms-3" href="member_C.html">註冊</a>
+              <button class="btn btn-outline-secondary ms-auto me-3">
+                取消
+              </button>
+              <button class="btn btn-info me-3" id="login_btn">登入</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section style="background-color: #498eaf; height: 250px ; margin-top: 130px;">
+    <div class="container ">
+      <div class="row">
+        <div class="box0001 col-md-3 mt-4">
+          <h2>會員專區</h2>
+          <ul>
+            <div class="mt-3">
+              <a href="../member/member_R.html" class="h5 text-d">會員中心</a>
+            </div>
+            <div class="mt-2">
+              <a href="../member/member_login.html" class="h5 text-d">會員登入</a>
+            </div>
+            <div class="mt-2">
+              <a href="../member/member_R.html" class="h5 text-d">訂房紀錄</a>
+            </div>
+            <div class="mt-2">
+              <a href="../member/member_R.html" class="h5 text-d">修改會員資料</a>
+            </div>
+          </ul>
+        </div>
+
+        <div class="box0001 col-md-5 mt-4">
+          <h2>Google MAP:</h2>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.034061749506!2d120.60793431317543!3d24.170538178517127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693e048d342aa9%3A0x2b6f18a6783fa3b!2z5Yue5YuV6YOo5Yue5YuV5Yqb55m85bGV572y5Lit5b2w5oqV5YiG572y77yI6Ie65Lit6IG36KiT5bGA77yJ!5e0!3m2!1szh-TW!2stw!4v1678602731779!5m2!1szh-TW!2stw"
+            width="450px" height="150px" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <div class="box0001 mt-4 col-md-4">
+          <h2>聯絡資訊</h2>
+          <i class="ms-1 fs-5 fa-solid fa-location-dot"></i>
+          <span class="h5">地址 : 台中市西屯區工業區一路100號</span>
+          <br />
+          <i class="ms-1 mt-3 fs-5 fa-solid fa-phone"></i>
+          <span class="h5">電話 : 04-0000-0000</span>
+          <br />
+          <i class="ms-1 mt-3 fs-5 fa-solid fa-envelope"></i>
+          <span class="h5">Email : test@gmail.com</span>
+          <br />
+          <i class="ms-1 mt-3 fs-5 fa-solid fa-clock"></i>
+          <span class="h5">營業時間 : 09:00-20:00 (全年無休)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="../js/jquery-3.6.1.min.js"></script>
+  <script src="../js/wow.min.js"></script>
+
+  <script>
+    $(function () {
+      if (getCookie("MUID01") != "" && getCookie("MUID02") != "") {
+        location.href = "../home/front_page.html";
+      }
+      //登入按鈕監聽
+      $("#login_btn").bind("click", function () {
+        var jsonData = {};
+        jsonData["mail"] = $("#login_email").val();
+        jsonData["mpassword"] = $("#login_password").val();
+        console.log(JSON.stringify(jsonData));
+
+        $.ajax({
+          type: "POST",
+          url: "member_login_api.php",
+          dataType: "json",
+          data: JSON.stringify(jsonData),
+          success: showdata_login,
+          error: function () {
+            alert("error-member_login_api.php");
+          },
+        });
+      });
+    });
+
+    function showdata_login(data) {
+      console.log(data);
+      if (data.state) {
+        //將UID寫入
+        setCookie("MUID01", data.data[0].MUID01, 7);
+        setCookie("MUID02", data.data[0].MUID02, 7);
+
+        alert(data.message);
+        location.href = "member_R.html";
+      } else {
+        alert(data.message);
+      }
+    }
+
+    //FROM W3C
+    function setCookie(cname, cvalue, exdays) {
+      const d = new Date();
+      d.setTime(d.getTime() + exdays * 24 * 60 * 1000);
+      let expires = "expires=" + d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(";");
+      for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == " ") {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>訂單管理</title>
+  <link rel="stylesheet" href="../css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../css/color.css" />
+  <style>
+    .box {
+      border: 2px solid var(--black);
+      height: 80px;
+      line-height: 80px;
+      font-size: larger;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .box_th {
+      font-size: larger;
+      font-weight: bold;
+      text-align: center;
+      background-color: blanchedalmond;
+      border: 2px solid var(--black);
+      height: 50px;
+      line-height: 50px;
+      white-space: nowrap;
+    }
+
+    .box_hd {
+      border: 2px solid var(--black);
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 導覽列 -->
+  <nav class="navbar bg-light sticky-top">
+    <div class="container-fluid d-flex">
+        <button class="navbar-toggler me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <a href="../home/front_page.html"><button class="btn btn-outline-dark m-3 me-3">回網站首頁</button></a>
+      <a class="navbar-brand fs-3 fw-bolder" href="#">佩特天旅後臺管理系統</a>
+      <div class="ms-auto">
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="請輸入電話號碼" aria-label="Search" id="order_select">
+          <button class="btn btn-lg btn-success d-block" type="button" id="select_click" style="flex-shrink: 0;">查詢</button>
+        </form>
+    </div>
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">佩特天旅後臺管理系統</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link" href="../order/order_R.html">訂單確認</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../room/room_U.html">房型管理</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../report/20230215_contropanel_chart.html">數據報表</a>
+            </li>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+ 
+
+  <!-- 一開始的會員表單 -->
+  <div class="container mt-3" id="order_R">
+    <!-- 訂單編號 -->
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table table-bordered box_th h-100">
+          <thead>
+            <tr>
+              <th>訂單編號</th>
+              <th>xxxxx</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+    <!-- 顯示訂房 -->
+    <div class="row">
+      <div class="col-md-11">
+        <table class="table table-bordered h-100">
+          <thead class="box_th">
+            <tr>
+              <th>入住日期</th>
+              <th>訂購房型</th>
+              <th>訂購間數</th>
+              <th>房型定價</th>
+              <th>入住天數</th>
+              <th>接送(+600)</th>
+              <th>美容(+1200)</th>
+              <th>小記</th>
+            </tr>
+          </thead>
+          <tbody class="box_hd">
+            <tr>
+              <td>20230101</td>
+              <td>精緻套房</td>
+              <td>1</td>
+              <td>1500</td>
+              <td>1</td>
+              <td>需要</td>
+              <td>需要</td>
+              <td>135055元</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 顯示會員 -->
+    <div class="row">
+      <div class="col-md-11">
+        <table class="table table-bordered h-100">
+          <thead class="box_th">
+            <tr>
+              <th>姓名</th>
+              <th>電話</th>
+              <th>Email</th>
+              <th>地址</th>
+            </tr>
+          </thead>
+          <tbody class="box_hd">
+            <tr>
+              <td>黃xx</td>
+              <td>09xx-xxx-xxx</td>
+              <td>ABC123@gamil</td>
+              <td>台中市西屯區</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 查詢後的表單 -->
+  <div class="container mt-3" id="order_select_R" style="display: none;">
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table table-bordered box_th h-100">
+          <thead>
+            <tr>
+              <th>訂單編號</th>
+              <th>xxxxx</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+    <!-- 顯示訂房 -->
+    <div class="row">
+      <div class="col-md-11">
+        <table class="table table-bordered h-100">
+          <thead class="box_th">
+            <tr>
+              <th>入住日期</th>
+              <th>訂購房型</th>
+              <th>訂購間數</th>
+              <th>房型定價</th>
+              <th>入住天數</th>
+              <th>接送(+600)</th>
+              <th>美容(+1200)</th>
+              <th>小記</th>
+            </tr>
+          </thead>
+          <tbody class="box_hd">
+            <tr>
+              <td>20230101</td>
+              <td>精緻套房</td>
+              <td>1</td>
+              <td>1500</td>
+              <td>1</td>
+              <td>需要</td>
+              <td>需要</td>
+              <td>135055元</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 顯示會員 -->
+    <div class="row">
+      <div class="col-md-11">
+        <table class="table table-bordered h-100">
+          <thead class="box_th">
+            <tr>
+              <th>姓名</th>
+              <th>電話</th>
+              <th>Email</th>
+              <th>地址</th>
+            </tr>
+          </thead>
+          <tbody class="box_hd">
+            <tr>
+              <td>黃xx</td>
+              <td>09xx-xxx-xxx</td>
+              <td>ABC123@gamil</td>
+              <td>台中市西屯區</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <section style="background-color: #498eaf; height: 250px" class="mt-4">
+    <div class="container">
+      <div class="row">
+        <div class="box0001 col-md-3 mt-4">
+          <h2>會員專區</h2>
+          <ul>
+            <div class="mt-3"><a href="../member/member_R.html" class="h5 text-d">會員中心</a></div>
+            <div class="mt-2">
+              <a href="../member/member_login.html" class="h5 text-d"
+                >會員登入</a
+              >
+            </div>
+            <div class="mt-2"><a href="../member/member_R.html" class="h5 text-d">訂房紀錄</a></div>
+            <div class="mt-2">
+              <a href="../member/member_R.html" class="h5 text-d">修改會員資料</a>
+            </div>
+          </ul>
+        </div>
+
+        <div class="box0001 col-md-5 mt-4">
+          <h2>Google MAP:</h2>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.034061749506!2d120.60793431317543!3d24.170538178517127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693e048d342aa9%3A0x2b6f18a6783fa3b!2z5Yue5YuV6YOo5Yue5YuV5Yqb55m85bGV572y5Lit5b2w5oqV5YiG572y77yI6Ie65Lit6IG36KiT5bGA77yJ!5e0!3m2!1szh-TW!2stw!4v1678602731779!5m2!1szh-TW!2stw"
+            width="450px"
+            height="150px"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+
+        <div class="box0001 mt-4 col-md-4">
+          <h2>聯絡資訊</h2>
+          <i class="ms-1 fs-5 fa-solid fa-location-dot"></i>
+          <span class="h5">地址 : 台中市西屯區工業區一路100號</span>
+          <br />
+          <i class="ms-1 mt-3 fs-5 fa-solid fa-phone"></i>
+          <span class="h5">電話 : 04-0000-0000</span>
+          <br />
+          <i class="ms-1 mt-3 fs-5 fa-solid fa-envelope"></i>
+          <span class="h5">Email : test@gmail.com</span>
+          <br />
+          <i class="ms-1 mt-3 fs-5 fa-solid fa-clock"></i>
+          <span class="h5">營業時間 : 09:00-20:00 (全年無休)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="../js/jquery-3.6.1.min.js"></script>
+  <script src="../js/check_member_state.js"></script>
+
+  <script>
+    var myphone;//儲存輸入的電話
+
+    $(function () {
+      //會員登入狀態確認
+      check_member_state();
+      //撈取會員訂單資料
+      $.ajax({
+        type: "GET",
+        url: "order_R_api.php",
+        dataType: "json",
+        async: false, //渲染要關閉非同步
+        success: showdata,
+        erroe: function () {
+          alert("err-mem_uid_check_api.php");
+        },
+      });
+      //監聽查詢input
+      $("#order_select").change(function () {
+        console.log($(this).val());
+        myphone = $(this).val();
+      });
+    });
+    function showdata(data) {
+      console.log(data);
+      if (data.state) {
+        //渲染一開始會員資料
+        $("#order_R").empty();
+        data.data.forEach(function (item) {
+          console.log(item.Odate);
+          var srcHTML =
+            '<div class="row mt-3"><div class="col-md-6 "><table class="table table-bordered box_th h-100"><thead><tr><th>訂單編號</th><th>' + item.Oid + '</th></tr></thead></table></div></div><div class="row"><div class="col-md-11"><table class="table table-bordered h-100"><thead class="box_th "><tr><th>入住日期</th><th>訂購房型</th><th>訂購間數</th><th>房型定價</th><th>入住天數</th><th>接送(+600)</th><th>美容(+1200)</th><th>小記</th></tr></thead><tbody class="box_hd"><tr><td>' + item.Odate + "</td><td>" + item.ORname + "</td><td>" + item.Onum + "</td><td>" + item.ORprice + "</td><td>" + item.Oday + "</td><td>" + item.Opick + "</td><td>" + item.Ocos + "</td><td>" + item.Ototal + '</td></tr></tbody></table></div></div><div class="row"><div class="col-md-11"><table class="table table-bordered h-100"><thead class="box_th "><tr><th>姓名</th><th>電話</th><th>Email</th><th>地址</th></tr></thead><tbody class="box_hd"><tr><td>' + item.Mname + "</td><td>" + item.Mphone + "</td><td>" + item.Mail + "</td><td>" + item.Map + "</td></tr></tbody></table></div></div>";
+
+          $("#order_R").append(srcHTML);
+        });
+
+        //查詢觸發監聽
+        $("#select_click").click(function () {
+
+          $("#order_R").hide();
+          $("#order_select_R").show();
+          $("#order_select_R").empty();
+          var conunter = 0;
+          data.data.find(function (item) {
+            if (item.Mphone == myphone) {
+              conunter ++;
+              console.log(item.ORname);
+              console.log(item.OUID);
+              var srcHTML =
+                '<div class="row mt-3"><div class="col-md-6 "><table class="table table-bordered box_th h-100"><thead><tr><th>訂單編號</th><th>' + item.Oid + '</th></tr></thead></table></div></div><div class="row"><div class="col-md-11"><table class="table table-bordered h-100"><thead class="box_th "><tr><th>入住日期</th><th>訂購房型</th><th>訂購間數</th><th>房型定價</th><th>入住天數</th><th>接送(+600)</th><th>美容(+1200)</th><th>小記</th></tr></thead><tbody class="box_hd"><tr><td>' + item.Odate + "</td><td>" + item.ORname + "</td><td>" + item.Onum + "</td><td>" + item.ORprice + "</td><td>" + item.Oday + "</td><td>" + item.Opick + "</td><td>" + item.Ocos + "</td><td>" + item.Ototal + '</td></tr></tbody></table></div></div><div class="row"><div class="col-md-11"><table class="table table-bordered h-100"><thead class="box_th "><tr><th>姓名</th><th>電話</th><th>Email</th><th>地址</th></tr></thead><tbody class="box_hd"><tr><td>' + item.Mname + "</td><td>" + item.Mphone + "</td><td>" + item.Mail + "</td><td>" + item.Map + "</td></tr></tbody></table></div></div>";
+
+              $("#order_select_R").append(srcHTML);
+            }
+          })
+          if (conunter == 0) {
+              alert("查無資料");
+            }
+
+        });
+
+      } else {
+        
+      }
+    }
+
+    function setCookie(cname, cvalue, exdays) {
+      const d = new Date();
+      d.setTime(d.getTime() + exdays * 24 * 60 * 1000);
+      let expires = "expires=" + d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(";");
+      for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == " ") {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+  </script>
+</body>
+
+</html>

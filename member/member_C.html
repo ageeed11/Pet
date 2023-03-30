@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>會員註冊</title>
+    <link rel="stylesheet" href="../css/all.min.css" />
+    <link rel="stylesheet" href="../css/animate.min.css" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/color.css" />
+    <style></style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg sticky-top" style="background: #ead6bd">
+      <div class="container-fluid">
+        <a class="navbar-brand fw-700 fs-2" href="../home/front_page.html">
+          <img src="../img/P0.png" alt="" style="width: 110px" /> 佩特天旅</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fw700">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="../home/Serving.html"
+                >服務項目</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="../room/room_R_show.html"
+                >房型介紹</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="../home/QA.html"
+                >住宿QA</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="../order/order_C.html"
+                >線上訂房</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                id="contropanel"
+                style="display: none"
+                href="../order/order_R.html"
+                target="_blank"
+                >後臺管理</a
+              >
+            </li>
+          </ul>
+          <span class="text-primary fw-500 fs-5 me-2" id="login_member"></span>
+          <button
+            class="btn btn-danger btn-sm"
+            type="button"
+            id="s2_logout_btn"
+            style="display: none"
+          >
+            登出
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mt-3">
+      <table class="table table-bordered">
+        <thead>
+          <div class="text-bg-secondary fw-700 ms fs-3">
+            <div class="ms-3">會員基本資料</div>
+          </div>
+        </thead>
+        <tbody id="member_R">
+          <tr>
+            <th class="text-center">
+              <label for="reg_name" class="fs-5">姓名</label>
+            </th>
+            <td class="col-10 fs-5">
+              <input
+                type="text"
+                class="form-control"
+                id="reg_name"
+                name="reg_name"
+                placeholder="姓名1~10個字"
+              />
+              <div class="form-text" id="err_reg_name"></div>
+            </td>
+          </tr>
+          <tr>
+            <th class="text-center">
+              <label for="reg_phone" class="fs-5">電話</label>
+            </th>
+            <td class="fs-5">
+              <input
+                type="text"
+                class="form-control"
+                id="reg_phone"
+                name="reg_phone"
+                placeholder=""
+              />
+              <div class="form-text" id="err_reg_phone"></div>
+            </td>
+          </tr>
+          <tr>
+            <th class="text-center">
+              <label for="reg_map" class="fs-5">地址</label>
+            </th>
+            <td class="fs-5">
+              <input
+                type="text"
+                class="form-control"
+                id="reg_map"
+                name="reg_map"
+                placeholder=""
+              />
+              <div class="form-text" id="err_reg_map"></div>
+            </td>
+          </tr>
+          <tr>
+            <th class="text-center">
+              <label for="reg_email" class="fs-5">EMAIL</label>
+            </th>
+            <td class="fs-5">
+              <input
+                type="email"
+                class="form-control"
+                id="reg_email"
+                name="reg_email"
+                placeholder=""
+              />
+              <div class="form-text" id="err_reg_email"></div>
+              <div class="valid-feedback" id="reg_valid-feedback">
+                帳號輸入正確
+              </div>
+              <div class="invalid-feedback" id="reg_invalid-feedback">
+                帳號輸入錯誤
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th class="text-center">
+              <label for="reg_question" class="fs-5">你讀的第一間國小</label>
+            </th>
+            <td class="col-10 fs-5">
+              <input
+                type="text"
+                class="form-control"
+                id="reg_question"
+                name="reg_question"
+                placeholder=""
+              />
+              <div class="form-text" id="err_reg_question"></div>
+            </td>
+          </tr>
+          <tr>
+            <th class="position-relative">
+              <label
+                for="reg_password"
+                class="fs-5 position-absolute top-50 start-50 translate-middle"
+                >密碼</label
+              >
+            </th>
+            <td class="fs-5">
+              <input
+                type="password"
+                class="form-control"
+                id="reg_password"
+                name="reg_password"
+                placeholder=""
+              />
+              <div class="form-text" id="err_reg_password"></div>
+            </td>
+          </tr>
+          <tr>
+            <th class="text-center">
+              <label for="reg_re_password" class="fs-5">再次確認密碼</label>
+            </th>
+            <td class="fs-5">
+              <input
+                type="password"
+                class="form-control"
+                id="reg_re_password"
+                name="reg_re_password"
+                placeholder=""
+              />
+              <div class="form-text" id="err_reg_re_password"></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="d-flex">
+        <button type="button" class="btn btn-warning ms-auto" id="reg_btn">
+          註冊
+        </button>
+      </div>
+    </div>
+    <section style="background-color: #498eaf; height: 250px" class="mt-1">
+      <div class="container">
+        <div class="row">
+          <div class="box0001 col-md-3 mt-4">
+            <h2>會員專區</h2>
+            <ul>
+              <div class="mt-3">
+                <a href="../member/member_R.html" class="h5 text-d">會員中心</a>
+              </div>
+              <div class="mt-2">
+                <a href="../member/member_login.html" class="h5 text-d"
+                  >會員登入</a
+                >
+              </div>
+              <div class="mt-2">
+                <a href="../member/member_R.html" class="h5 text-d">訂房紀錄</a>
+              </div>
+              <div class="mt-2">
+                <a href="../member/member_R.html" class="h5 text-d"
+                  >修改會員資料</a
+                >
+              </div>
+            </ul>
+          </div>
+
+          <div class="box0001 col-md-5 mt-4">
+            <h2>Google MAP:</h2>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.034061749506!2d120.60793431317543!3d24.170538178517127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693e048d342aa9%3A0x2b6f18a6783fa3b!2z5Yue5YuV6YOo5Yue5YuV5Yqb55m85bGV572y5Lit5b2w5oqV5YiG572y77yI6Ie65Lit6IG36KiT5bGA77yJ!5e0!3m2!1szh-TW!2stw!4v1678602731779!5m2!1szh-TW!2stw"
+              width="450px"
+              height="150px"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+
+          <div class="box0001 mt-4 col-md-4">
+            <h2>聯絡資訊</h2>
+            <i class="ms-1 fs-5 fa-solid fa-location-dot"></i>
+            <span class="h5">地址 : 台中市西屯區工業區一路100號</span>
+            <br />
+            <i class="ms-1 mt-3 fs-5 fa-solid fa-phone"></i>
+            <span class="h5">電話 : 04-0000-0000</span>
+            <br />
+            <i class="ms-1 mt-3 fs-5 fa-solid fa-envelope"></i>
+            <span class="h5">Email : test@gmail.com</span>
+            <br />
+            <i class="ms-1 mt-3 fs-5 fa-solid fa-clock"></i>
+            <span class="h5">營業時間 : 09:00-20:00 (全年無休)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/jquery-3.6.1.min.js"></script>
+    <script src="../js/wow.min.js"></script>
+    <script>
+      new WOW().init();
+
+      var flag_name = false;
+      var flag_phone = false;
+      var flag_map = true;
+      var flag_email = false;
+      var flag_question = true;
+      var flag_password = true;
+
+      $(function () {
+        //如果已登入就不能進來
+        if (getCookie("MUID01") != "" && getCookie("MUID02") != "") {
+          location.href = "../home/front_page.html";
+        }
+        //註冊按鈕監聽
+        $("#reg_btn").bind("click", function () {
+          console.log("reg");
+          if (
+            flag_name &&
+            flag_phone &&
+            flag_map &&
+            flag_email &&
+            flag_question &&
+            flag_password
+          ) {
+            var jsonData = {};
+            jsonData["mname"] = $("#reg_name").val();
+            jsonData["mphone"] = $("#reg_phone").val();
+            jsonData["map"] = $("#reg_map").val();
+            jsonData["mail"] = $("#reg_email").val();
+            jsonData["mquestion"] = $("#reg_question").val();
+            jsonData["mpassword"] = $("#reg_password").val();
+            console.log(JSON.stringify(jsonData));
+
+            $.ajax({
+              type: "POST",
+              url: "member_C_api.php",
+              dataType: "json",
+              data: JSON.stringify(jsonData),
+              success: showdata_reg,
+              error: function () {
+                alert("error-member_C_api.php");
+              },
+            });
+          } else {
+            alert("欄位輸入不符規定, 請修正!");
+          }
+          //清空cookies
+          setCookie("MUID01", "", 0);
+          setCookie("MUID02", "", 0);
+        });
+
+        //姓名即時監聽
+        $("#reg_name").bind("input propertychange", function () {
+          if ($(this).val().length > 0 && $(this).val().length < 11) {
+            //符合規則
+            // $("#err_reg_name").html("密碼符合規則!");
+            // $("#err_reg_name").css("color", "green");
+
+            $("#reg_name").removeClass("is-invalid");
+            $("#reg_name").addClass("is-valid");
+            flag_name = true;
+          } else {
+            // $("#err_reg_name").html("姓名不得超過10個字!");
+            // $("#err_reg_name").css("color", "red");
+
+            $("#reg_name").removeClass("is-valid");
+            $("#reg_name").addClass("is-invalid");
+            flag_name = false;
+          }
+        });
+
+        //電話即時監聽
+        $("#reg_phone").bind("input propertychange", function () {
+          if ($(this).val().length > 9 && $(this).val().length < 11) {
+            //符合規則
+
+            $("#reg_phone").removeClass("is-invalid");
+            $("#reg_phone").addClass("is-valid");
+            flag_phone = true;
+          } else {
+            $("#reg_phone").removeClass("is-valid");
+            $("#reg_phone").addClass("is-invalid");
+            flag_phone = false;
+          }
+        });
+
+        //信箱即時監聽
+        $("#reg_email").bind("input propertychange", function () {
+          if ($(this).val().length > 0 && $(this).val().length < 64) {
+            //符合規則
+            var jsonData = {};
+            jsonData["mail"] = $(this).val();
+            console.log(JSON.stringify(jsonData));
+            $.ajax({
+              type: "POST",
+              url: "member_C_check_one_api.php",
+              dataType: "json",
+              data: JSON.stringify(jsonData),
+              success: showdata_check_one,
+              error: function () {
+                alert("error-member_C_check_one_api.php");
+              },
+            });
+            $("#reg_valid-feedback").text("格式輸入正確!");
+            $("#reg_email").removeClass("is-invalid");
+            $("#reg_email").addClass("is-valid");
+            flag_email = true;
+          } else {
+            //不符合規則
+            $("#reg_invalid-feedback").text("格式輸入不正確!");
+            $("#reg_email").removeClass("is-valid");
+            $("#reg_email").addClass("is-invalid");
+            flag_email = false;
+          }
+        });
+
+        //密碼即時監聽
+        $("#reg_password").bind("input propertychange", function () {
+          if ($(this).val().length > 0 && $(this).val().length < 64) {
+            //符合規則
+            // $("#err_reg_password").html("密碼符合規則!");
+            // $("#err_reg_password").css("color", "green");
+
+            $("#reg_password").removeClass("is-invalid");
+            $("#reg_password").addClass("is-valid");
+            flag_password = true;
+          } else {
+            // $("#err_reg_password").html("字數不符合規則!");
+            // $("#err_reg_password").css("color", "red");
+
+            $("#reg_password").removeClass("is-valid");
+            $("#reg_password").addClass("is-invalid");
+            flag_password = false;
+          }
+        });
+
+        //確認密碼即時監聽
+        $("#reg_re_password").bind("input propertychange", function () {
+          if ($(this).val() == $("#reg_password").val()) {
+            //密碼確認一致
+            $("#err_reg_re_password").html("密碼一致!");
+            $("#err_reg_re_password").css("color", "green");
+            flag_repassword = true;
+          } else {
+            $("#err_reg_re_password").html("密碼不一致!");
+            $("#err_reg_re_password").css("color", "red");
+            flag_repassword = false;
+          }
+        });
+      });
+
+      function showdata_reg(data) {
+        console.log(data);
+        if (data.state) {
+          alert(data.message);
+          location.href = "member_login.html";
+        } else {
+          alert(data.message);
+        }
+      }
+
+      function showdata_check_one(data) {
+        console.log(data);
+        if (data.state) {
+          //該帳號未註冊,可使用此帳號!
+          $("#reg_valid-feedback").text("該信箱未註冊,可使用此帳號!");
+          $("#reg_email").removeClass("is-invalid");
+          $("#reg_email").addClass("is-valid");
+          flag_email = true;
+        } else {
+          //該帳號已註冊,不可使用此帳號!
+          $("#reg_invalid-feedback").text(
+            "該信箱已註冊,不可使用此帳號!!!!!!!!!!!!"
+          );
+          $("#reg_email").removeClass("is-valid");
+          $("#reg_email").addClass("is-invalid");
+          flag_email = false;
+        }
+      }
+      //form w3c
+      function setCookie(cname, cvalue, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + exdays * 24 * 60 * 1000);
+        let expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+      }
+
+      function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(";");
+        for (let i = 0; i < ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == " ") {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+      }
+    </script>
+  </body>
+</html>

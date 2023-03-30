@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>會員中心</title>
+    <link rel="stylesheet" href="../css/all.min.css" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/color.css" />
+    <style>
+      .box {
+        border: 2px solid var(--black);
+        height: 80px;
+        line-height: 80px;
+        font-size: larger;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      .box_th {
+        font-size: larger;
+        font-weight: bold;
+        text-align: center;
+        background-color: blanchedalmond;
+        border: 2px solid var(--black);
+        height: 50px;
+        line-height: 50px;
+        white-space: nowrap;
+      }
+
+      .box_hd {
+        border: 2px solid var(--black);
+        height: 50px;
+        line-height: 50px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg sticky-top" style="background: #ead6bd">
+      <div class="container-fluid">
+        <a class="navbar-brand fw-700 fs-2" href="../home/front_page.html">
+          <img src="../img/P0.png" alt="" style="width: 110px" /> 佩特天旅</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fw700">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="../home/Serving.html"
+                >服務項目</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="../room/room_R_show.html"
+                >房型介紹</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="../home/QA.html"
+                >住宿QA</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="../order/order_C.html"
+                >線上訂房</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                id="contropanel"
+                style="display: none"
+                href="../order/order_R.html"
+                target="_blank"
+                >後臺管理</a
+              >
+            </li>
+          </ul>
+          <span class="text-primary fw-500 fs-5 me-2" id="login_member"></span>
+          <button
+            class="btn btn-danger btn-sm"
+            type="button"
+            id="s2_logout_btn"
+            style="display: none"
+          >
+            登出
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mt-3">
+      <table class="table table-bordered">
+        <thead>
+          <div class="text-bg-secondary fw-700 ms fs-3">
+            <div class="ms-3">會員基本資料</div>
+          </div>
+        </thead>
+        <tbody id="member_R">
+          <tr>
+            <th class="text-center">
+              <div class="fs-5">姓名</div>
+            </th>
+            <td class="col-10 fs-5">owner</td>
+          </tr>
+          <tr>
+            <th class="text-center">
+              <div class="fs-5">電話</div>
+            </th>
+            <td class="fs-5">09XXXXXXXX</td>
+          </tr>
+          <tr>
+            <th class="text-center">
+              <div class="fs-5">地址</div>
+            </th>
+            <td class="fs-5">000000000000000</td>
+          </tr>
+          <tr>
+            <th class="text-center">
+              <div class="fs-5">EMAIL</div>
+            </th>
+            <td class="fs-5">teat@test.com</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="d-flex" id="btn">
+        <button
+          class="btn btn-warning ms-auto"
+          data-bs-toggle="modal"
+          data-bs-target="#updateModal"
+          id="update_btn"
+          data-Mname="xxx"
+        >
+          更新會員資料
+        </button>
+      </div>
+
+      <!-- 預約資訊 -->
+      <h1 class="mt-4">預約資訊</h1>
+      <div id="order_R">
+        <div class="row">
+          <div class="col-6">
+            <div class="row" style="background-color: blanchedalmond">
+              <div
+                class="col-6 box_hd text-center text fs-3 fw-bold border-bottom-0"
+              >
+                訂單編號
+              </div>
+              <div
+                class="col-6 box_hd text-center text fs-3 fw-bold border-bottom-0 border-start-0"
+              >
+                xxxxxxxxxxxx
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="row">
+              <div class="col-md-6 box_th border-bottom-0">入住日期</div>
+              <div class="col-md-6 box_th border-bottom-0 border-start-0">
+                訂購房型
+              </div>
+            </div>
+          </div>
+          <div class="col-md-9">
+            <div class="row">
+              <div class="col-md-2 box_th border-start-0 border-bottom-0">
+                訂購間數
+              </div>
+              <div class="col-md-2 box_th border-start-0 border-bottom-0">
+                房型定價
+              </div>
+              <div class="col-md-2 box_th border-start-0 border-bottom-0">
+                入住天數
+              </div>
+              <div class="col-md-2 box_th border-start-0 border-bottom-0">
+                接送(+600)
+              </div>
+              <div class="col-md-2 border-start-0 border-bottom-0 box_th">
+                美容(+1200)
+              </div>
+              <div class="col-md-2 box_th border-start-0 border-bottom-0">
+                小計
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="row">
+              <div class="col-md-6 box">XXX</div>
+              <div class="col-md-6 box border-start-0">XXX</div>
+            </div>
+          </div>
+          <div class="col-md-9">
+            <div class="row">
+              <div class="col-md-2 box border-start-0">XXX</div>
+              <div
+                class="col-md-2 box border-start-0"
+                value="1500"
+                id="select_price"
+              >
+                1500
+              </div>
+              <div class="col-md-2 box border-start-0">XXX</div>
+              <div class="col-md-2 box border-start-0">XXX</div>
+              <div class="col-md-2 box border-start-0">XXX</div>
+              <div
+                class="col-md-2 box border-start-0"
+                id="select_sub"
+                value="xxx"
+              ></div>
+              <div class="d-flex" id="btn">
+                <button
+                  class="btn btn-secondary ms-auto mt-3"
+                  data-delete="xxx"
+                >
+                  取消訂單
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- updateModal -->
+    <div
+      class="modal fade"
+      id="updateModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">
+              會員基本資料更新
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="m_name">姓名</label>
+              <input
+                type="text"
+                class="form-control"
+                id="m_name"
+                name="m_name"
+                placeholder=""
+              />
+              <div class="form-text" id="err_pname"></div>
+            </div>
+            <div class="mb-3">
+              <label for="m_phone">電話</label>
+              <input
+                type="text"
+                min="1"
+                max="500"
+                class="form-control"
+                id="m_phone"
+                name="m_phone"
+                placeholder=""
+              />
+              <div class="form-text" id="err_price"></div>
+            </div>
+            <div class="mb-3">
+              <label for="m_map">地址</label>
+              <input
+                type="text"
+                min="1"
+                max="30"
+                class="form-control"
+                id="m_map"
+                name="m_map"
+                placeholder=""
+              />
+              <div class="form-text" id="err_pnum"></div>
+            </div>
+            <div class="mb-3">
+              <label for="m_mail">EMAIL</label>
+              <input
+                type="text"
+                min="1"
+                max="30"
+                class="form-control"
+                id="m_mail"
+                name="m_mail"
+                placeholder=""
+                disabled
+              />
+              <div class="form-text" id="err_pnum"></div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              取消
+            </button>
+            <button type="button" class="btn btn-primary" id="m_update_btn">
+              確認更新
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section style="background-color: #498eaf; height: 250px" class="mt-1">
+      <div class="container">
+        <div class="row">
+          <div class="box0001 col-md-3 mt-4">
+            <h2>會員專區</h2>
+            <ul>
+              <div class="mt-3">
+                <a href="../member/member_R.html" class="h5 text-d">會員中心</a>
+              </div>
+              <div class="mt-2">
+                <a href="../member/member_login.html" class="h5 text-d"
+                  >會員登入</a
+                >
+              </div>
+              <div class="mt-2">
+                <a href="../member/member_R.html" class="h5 text-d">訂房紀錄</a>
+              </div>
+              <div class="mt-2">
+                <a href="../member/member_R.html" class="h5 text-d"
+                  >修改會員資料</a
+                >
+              </div>
+            </ul>
+          </div>
+
+          <div class="box0001 col-md-5 mt-4">
+            <h2>Google MAP:</h2>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.034061749506!2d120.60793431317543!3d24.170538178517127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693e048d342aa9%3A0x2b6f18a6783fa3b!2z5Yue5YuV6YOo5Yue5YuV5Yqb55m85bGV572y5Lit5b2w5oqV5YiG572y77yI6Ie65Lit6IG36KiT5bGA77yJ!5e0!3m2!1szh-TW!2stw!4v1678602731779!5m2!1szh-TW!2stw"
+              width="450px"
+              height="150px"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+
+          <div class="box0001 mt-4 col-md-4">
+            <h2>聯絡資訊</h2>
+            <i class="ms-1 fs-5 fa-solid fa-location-dot"></i>
+            <span class="h5">地址 : 台中市西屯區工業區一路100號</span>
+            <br />
+            <i class="ms-1 mt-3 fs-5 fa-solid fa-phone"></i>
+            <span class="h5">電話 : 04-0000-0000</span>
+            <br />
+            <i class="ms-1 mt-3 fs-5 fa-solid fa-envelope"></i>
+            <span class="h5">Email : test@gmail.com</span>
+            <br />
+            <i class="ms-1 mt-3 fs-5 fa-solid fa-clock"></i>
+            <span class="h5">營業時間 : 09:00-20:00 (全年無休)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="../js/jquery-3.6.1.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script>
+      $(function () {
+        var id;
+        var flag_name = false;
+        var flag_phone = false;
+        var flag_email = false;
+        if (getCookie("MUID01") != "" && getCookie("MUID02") != "") {
+          //傳遞至後端驗證UID
+          var JSONdata = {};
+          JSONdata["uid01"] = getCookie("MUID01");
+          JSONdata["uid02"] = getCookie("MUID02");
+          // console.log(JSON.stringify(JSONdata));
+          $.ajax({
+            type: "POST",
+            url: "mem_uid_check_api.php",
+            dataType: "json",
+            data: JSON.stringify(JSONdata),
+            async: false, //渲染要關閉非同步
+            success: showdata_uid_check,
+            erroe: function () {
+              alert("err-mem_uid_check_api.php");
+            },
+          });
+        } else {
+          location.href = "member_login.html";
+        }
+        //監聽更新會員資料按鈕update_btn
+        $("#update_btn").bind("click", function () {
+          console.log("test");
+          console.log($(this).data("id"));
+
+          id = $(this).data("id");
+          var mname = $(this).data("mname");
+          var mphone = $(this).data("mphone");
+          var map = $(this).data("map");
+          var mail = $(this).data("mail");
+
+          $("#m_name").val(mname);
+          $("#m_phone").val(mphone);
+          $("#m_map").val(map);
+          $("#m_mail").val(mail);
+        });
+
+        //model 確認更新 觸發監聽
+        $("#m_update_btn").click(function () {
+          console.log("test");
+
+          var josonData = {};
+          josonData["ID"] = id;
+          josonData["mname"] = $("#m_name").val();
+          josonData["mphone"] = $("#m_phone").val();
+          josonData["map"] = $("#m_map").val();
+          josonData["mail"] = $("#m_mail").val();
+
+          $.ajax({
+            type: "POST",
+            url: "member_U_api.php",
+            data: JSON.stringify(josonData),
+            dataType: "json",
+            async: false,
+            success: showdata_update,
+            error: function () {
+              alert("error_20221215_food_U.api.php");
+            },
+          });
+        });
+        //姓名即時監聽
+        $("#m_name").bind("input propertychange", function () {
+          if ($(this).val().length > 0 && $(this).val().length < 11) {
+            //符合規則
+            $("#m_name").removeClass("is-invalid");
+            $("#m_name").addClass("is-valid");
+            flag_name = true;
+          } else {
+            $("#m_name").removeClass("is-valid");
+            $("#m_name").addClass("is-invalid");
+            flag_name = false;
+          }
+        });
+
+        //電話即時監聽
+        $("#m_phone").bind("input propertychange", function () {
+          if ($(this).val().length > 9 && $(this).val().length < 11) {
+            //符合規則
+            $("#m_phone").removeClass("is-invalid");
+            $("#m_phone").addClass("is-valid");
+            flag_phone = true;
+          } else {
+            $("#m_phone").removeClass("is-valid");
+            $("#m_phone").addClass("is-invalid");
+            flag_phone = false;
+          }
+        });
+
+        //信箱即時監聽
+        $("#m_mail").bind("input propertychange", function () {
+          if ($(this).val().length > 0 && $(this).val().length < 64) {
+            //符合規則
+            var jsonData = {};
+            jsonData["mail"] = $(this).val();
+            console.log(JSON.stringify(jsonData));
+            $.ajax({
+              type: "POST",
+              url: "member_C_check_one_api.php",
+              dataType: "json",
+              data: JSON.stringify(jsonData),
+              success: showdata_check_one,
+              error: function () {
+                alert("error-member_C_check_one_api.php");
+              },
+            });
+            $("#reg_valid-feedback").text("格式輸入正確!");
+            $("#m_mail").removeClass("is-invalid");
+            $("#m_mail").addClass("is-valid");
+            flag_email = true;
+          } else {
+            //不符合規則
+            $("#reg_invalid-feedback").text("格式輸入不正確!");
+            $("#m_mail").removeClass("is-valid");
+            $("#m_mail").addClass("is-invalid");
+            flag_email = false;
+          }
+        });
+
+        //刪除訂單 觸發監聽
+        $("#btn #o_dele").click(function () {
+          console.log("test");
+          console.log($(this).data("delete"));
+          if (confirm("確認刪除 訂單編號:" + $(this).data("delete"))) {
+            var JSONdata = {};
+            JSONdata["oid"] = $(this).data("delete");
+
+            // console.log(JSON.stringify(JSONdata));
+            $.ajax({
+              type: "POST",
+              url: "order_D_api.php",
+              dataType: "json",
+              data: JSON.stringify(JSONdata),
+              async: false, //渲染要關閉非同步
+              success: showdata_oid_del,
+              erroe: function () {
+                alert("err-order_D_api.php");
+              },
+            });
+          } else {
+            console.log("not ok");
+          }
+        });
+        //登出按鈕s2_logout_btn監聽
+        $("#s2_logout_btn").bind("click", function () {
+          console.log("test");
+          setCookie("MUID01", "", 7);
+          setCookie("MUID02", "", 7);
+          location.href = "../home/front_page.html";
+        });
+      });
+
+      function showdata_uid_check(data) {
+        console.log(data);
+
+        if (data.state) {
+          //UID驗證合法
+          //顯示會員帳號相關訊息
+          $("#login_member").text(data.data[0].Mname + "會員您好!");
+
+          //顯示登出按鈕
+          $("#s2_logout_btn").show();
+          //秀出後台管理
+          if (data.data[0].Mname == "admin") {
+            $("#contropanel").show();
+          }
+
+          // console.log(data.data[0].Mname);
+          $("#member_R").empty();
+          // $("#btn").empty();
+          var uStateHTML =
+            '<tr><th class="text-center "><div class="fs-5">姓名</div></th><td class="col-10 fs-5" >' +
+            data.data[0].Mname +
+            '</td></tr><tr><th class="text-center"><div class="fs-5">電話</div></th><td class=" fs-5" >' +
+            data.data[0].Mphone +
+            '</td></tr><tr><th class="text-center"><div class="fs-5" >地址</div></th> <td class=" fs-5" >' +
+            data.data[0].Map +
+            '</td></tr><tr><th class="text-center"><div class="fs-5">EMAIL</div></th><td class=" fs-5" >' +
+            data.data[0].Mail +
+            "</td></tr>";
+          $("#member_R").append(uStateHTML);
+
+          //渲染更新按鈕
+          $("#btn").html(
+            '<button class="btn btn-warning ms-auto" data-bs-toggle="modal" data-bs-target="#updateModal" id="update_btn" data-mname="' +
+              data.data[0].Mname +
+              '" data-mphone="' +
+              data.data[0].Mphone +
+              '" data-map="' +
+              data.data[0].Map +
+              '" data-mail="' +
+              data.data[0].Mail +
+              '" data-id="' +
+              data.data[0].ID +
+              '">更新會員資料</button>'
+          );
+
+          //撈取預約訂單資訊
+          console.log(data.data[0].ID);
+          var jsonData = {};
+          jsonData["id"] = data.data[0].ID;
+          console.log(JSON.stringify(jsonData));
+          $.ajax({
+            type: "POST",
+            url: "ord_mem_R_one_api.php",
+            dataType: "json",
+            async: false,
+            data: JSON.stringify(jsonData),
+            success: showdata_ord_mem_check,
+            error: function () {
+              alert("error-ord_mem_R_one_api.php");
+            },
+          });
+        } else {
+          location.href = "member_login.html";
+        }
+      }
+      function showdata_update(data) {
+        if (data.state) {
+          alert(data.message);
+          location.href = "member_R.html";
+        } else {
+          alert(data.message);
+        }
+      }
+      function showdata_check_one(data) {
+        console.log(data);
+        if (data.state) {
+          //該帳號未註冊,可使用此帳號!
+          $("#update_valid-feedback").text("該信箱未註冊,可使用此帳號!");
+          $("#m_mail").removeClass("is-invalid");
+          $("#m_mail").addClass("is-valid");
+          flag_email = true;
+        } else {
+          //該帳號已註冊,不可使用此帳號!
+          $("#update_invalid-feedback").text(
+            "該信箱已註冊,不可使用此帳號!!!!!!!!!!!!"
+          );
+          $("#m_mail").removeClass("is-valid");
+          $("#m_mail").addClass("is-invalid");
+          flag_email = false;
+        }
+      }
+      //撈取預約訂單資訊
+      function showdata_ord_mem_check(data) {
+        console.log(data);
+        //渲染預約訂單資料
+        if (data.state) {
+          console.log(data.data[0].Oid);
+          $("#order_R").empty();
+          data.data.forEach(function (item) {
+            var strHTML =
+              '<div id="order_R " class="mt-3"> <div class="row"><div class="col-md-6 "><div class="row" style="background-color: blanchedalmond;"><div class="col-md-6  box_hd text-center text fs-3 fw-bold border-bottom-0">訂單編號</div><div class="col-md-6  box_hd text-center text fs-3 fw-bold border-bottom-0 border-start-0">' +
+              item.Oid +
+              '</div></div></div></div><div class="row"><div class="col-md-3 "><div class="row"><div class="col-md-6 box_th border-bottom-0">入住日期</div><div class="col-md-6 box_th border-bottom-0 border-start-0">訂購房型</div></div></div><div class="col-md-9 "><div class="row"><div class="col-md-2 box_th border-start-0 border-bottom-0">訂購間數</div><div class="col-md-2 box_th border-start-0 border-bottom-0">房型定價</div><div class="col-md-2 box_th  border-start-0 border-bottom-0">入住天數</div><div class="col-md-2 box_th  border-start-0 border-bottom-0">接送(+600)</div><div class="col-md-2 border-start-0 border-bottom-0 box_th">美容(+1200)</div><div class="col-md-2 box_th  border-start-0 border-bottom-0">小計</div></div></div></div><div class="row"><div class="col-md-3 "><div class="row"><div class="col-md-6 box">' +
+              item.Odate +
+              '</div><div class="col-md-6 box  border-start-0 ">' +
+              item.ORname +
+              '</div></div></div><div class="col-md-9 "><div class="row"><div class="col-md-2 box  border-start-0">' +
+              item.Onum +
+              '</div><div class="col-md-2 box  border-start-0" value="1500" id="select_price">' +
+              item.ORprice +
+              '</div><div class="col-md-2 box  border-start-0">' +
+              item.Oday +
+              '</div><div class="col-md-2 box  border-start-0">' +
+              item.Opick +
+              '</div><div class="col-md-2 box  border-start-0">' +
+              item.Ocos +
+              '</div><div class="col-md-2 box  border-start-0" id="select_sub" value="xxx">' +
+              item.Ototal +
+              '</div><div  class="d-flex" id="btn"><button class="btn btn-secondary ms-auto mt-3 "data-delete="' +
+              item.Oid +
+              '"" id="o_dele">取消訂單</button></div></div></div></div></div>';
+
+            $("#order_R").append(strHTML);
+          });
+        } else {
+          //隱藏訂單資訊
+          $("#order_R").hide();
+        }
+      }
+      //刪除訂單資料
+      function showdata_oid_del(data) {
+        console.log(data);
+        if (data.state) {
+          alert(data.message);
+          location.href = "member_R.html";
+        } else {
+          alert(data.message);
+        }
+      }
+      //form w3c
+      function setCookie(cname, cvalue, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + exdays * 24 * 60 * 1000);
+        let expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+      }
+
+      function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(";");
+        for (let i = 0; i < ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == " ") {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+      }
+    </script>
+  </body>
+</html>

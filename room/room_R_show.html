@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>房型介紹</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/cover.css">
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/jquery-3.6.1.min.js"></script>
+    <script src="../js/check_member_state.js"></script>
+    <style>
+        .box1 {
+            background-color: aqua;
+        }
+
+        @media screen and (max-width: 768px) {
+            .table-rwd thead {
+                display: none;
+            }
+        }
+
+        .box {
+            width: 240px;
+            color: var(--p5);
+            border: 4px solid var(--p1);
+            padding: 15px;
+            margin: 15px;
+            border-radius: 15px;
+            /*圓角*/
+            font-weight: bolder;
+            /*文字粗體*/
+            box-shadow: var(--p12) 2px 2px 2px 2px;
+            /*陰影*/
+        }
+
+        .box003 {
+            margin-top: 10%;
+            padding: 20px 20px 20px 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .box002 {
+            margin-top: 10%;
+            padding: 20px 20px 20px 20px;
+            background: #ead6bd;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        body {
+            font-weight: 900;
+        }
+    </style>
+
+<body>
+    <nav class="navbar navbar-expand-lg sticky-top" style="background: #ead6bd; ">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-700 fs-2" href="../home/front_page.html"> <img src="../img/P0.png" alt=""
+                    style="width: 110px;">
+                佩特天旅</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fw700">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="../home/Serving.html">服務項目</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="../room/room_R_show.html">房型介紹</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="../home/QA.html">住宿QA</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="../order/order_C.html">線上訂房</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" id="contropanel" style="display: none;"
+                            target="_blank" href="../order/order_R.html">後臺管理</a>
+                    </li>
+
+                </ul>
+                <span class="text-primary fw-500 fs-5 me-2" id="login_member"></span>
+                <button class="btn btn-danger btn-sm" type="button" id="s2_logout_btn"
+                    style="display: none;">登出</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" id="mybody">
+        <div class="row">
+            <div class="col-10 offset-1">
+                <div class="row mt-5 my-5">
+                    <div class="col-md-4">
+                        <div class="box002">
+                            <span class="fs-1">總統套房</span>
+                        </div>
+                        <div class="box003">
+                            <hr style="border: 2px solid rgb(223, 171, 27)" />
+                            <span class="fs-1">每晚住宿價格</span><br>
+                            <hr style="border: 2px solid rgb(223, 171, 27)" />
+                            <span class="fs-2">NT: </span><span class="fs-1 text-danger">1000</span><span class="fs-2"> 元</span>
+                            <hr style="border: 2px solid rgb(223, 171, 27)" />
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card" style="width: auto">
+                            <img src="../img/dog-care_900x600_crop_in.png" alt="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- ****************************************頁尾******************************** -->
+    <section style="background-color: #498eaf; height: 250px" class="mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="box0001 col-md-3 mt-4">
+                    <h2>會員專區</h2>
+                    <ul>
+                        <div class="mt-3"><a href="../member/member_R.html" class="h5 text-d">會員中心</a></div>
+                        <div class="mt-2">
+                            <a href="../member/member_login.html" class="h5 text-d">會員登入</a>
+                        </div>
+                        <div class="mt-2"><a href="../member/member_R.html" class="h5 text-d">訂房紀錄</a></div>
+                        <div class="mt-2">
+                            <a href="../member/member_R.html" class="h5 text-d">修改會員資料</a>
+                        </div>
+                    </ul>
+                </div>
+
+                <div class="box0001 col-md-5 mt-4">
+                    <h2>Google MAP:</h2>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.034061749506!2d120.60793431317543!3d24.170538178517127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693e048d342aa9%3A0x2b6f18a6783fa3b!2z5Yue5YuV6YOo5Yue5YuV5Yqb55m85bGV572y5Lit5b2w5oqV5YiG572y77yI6Ie65Lit6IG36KiT5bGA77yJ!5e0!3m2!1szh-TW!2stw!4v1678602731779!5m2!1szh-TW!2stw"
+                        width="450px" height="150px" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+                <div class="box0001 mt-4 col-md-4">
+                    <h2>聯絡資訊</h2>
+                    <i class="ms-1 fs-5 fa-solid fa-location-dot"></i>
+                    <span class="h5">地址 : 台中市西屯區工業區一路100號</span>
+                    <br />
+                    <i class="ms-1 mt-3 fs-5 fa-solid fa-phone"></i>
+                    <span class="h5">電話 : 04-0000-0000</span>
+                    <br />
+                    <i class="ms-1 mt-3 fs-5 fa-solid fa-envelope"></i>
+                    <span class="h5">Email : test@gmail.com</span>
+                    <br />
+                    <i class="ms-1 mt-3 fs-5 fa-solid fa-clock"></i>
+                    <span class="h5">營業時間 : 09:00-20:00 (全年無休)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        var id;
+        var flag_rname = false;
+        var flag_rprice = false;
+        var flag_rnum = false;
+
+        $(function () {
+            if (getCookie("MUID01") && getCookie("MUID02")) {
+                //傳遞至後端驗證UID
+                var JSONdata = {};
+                JSONdata["uid01"] = getCookie("MUID01");
+                JSONdata["uid02"] = getCookie("MUID02");
+                // console.log(JSON.stringify(JSONdata));
+                $.ajax({
+                    type: "POST",
+                    url: "../member/mem_uid_check_api.php",
+                    dataType: "json",
+                    data: JSON.stringify(JSONdata),
+                    async: false, //渲染要關閉非同步
+                    success: showdata_uid_check,
+                    erroe: function () {
+                        alert("err-mem_uid_check_api.php");
+                    },
+                });
+            }
+            //登出按鈕s2_logout_btn監聽
+            $("#s2_logout_btn").bind("click", function () {
+                console.log("test");
+                setCookie("MUID01", "", 7);
+                setCookie("MUID02", "", 7);
+                location.href = "../home/front_page.html";
+            });
+
+            $.ajax({
+                type: "GET",
+                url: "room_R_api.php", //去那裡獲得資料 ulr位址
+                dataType: "JSON", //資料型態
+                async: false, //先有資料再有畫面
+                success: showdata,
+                error: function () { //取得資料失敗 要顯示的錯誤訊息
+                    alert("error!-room_R_api.php");
+                }
+            });
+        });
+        function showdata_uid_check(data) {
+            if (data.state) {
+                //UID驗證合法
+                //顯示會員帳號相關訊息
+                $("#login_member").text(data.data[0].Mname + "會員您好!");
+
+                //顯示登出按鈕
+                $("#s2_logout_btn").show();
+                //秀出後台管理
+                if (data.data[0].Mname == "admin") {
+                    $("#contropanel").show();
+                }
+
+            }
+        }
+        function showdata(data) {
+            console.log(data);//先測試是否讀取API資料成功
+            if (data.state) {
+                // alert(data.message); //消除資料
+                $("#mybody").empty();
+                for (var i = 0; i < data.data.length; i++) { //要注意大小寫要與資料庫一致
+                    var strHTML = '<div class="container" id="mybody"><div class="row"><div class="col-10 offset-1"><div class="row mt-5 my-5"><div class="col-md-4"><div class="box002"><span class="fs-1">' + data.data[i]["Rname"] + '</span></div><div class="box003"><hr style="border: 2px solid rgb(223, 171, 27)" /><span class="fs-1">每晚住宿價格</span><br><hr style="border: 2px solid rgb(223, 171, 27)" /><span class="fs-2">NT: </span><span class="fs-1 text-danger">' + data.data[i]["Rprice"] + '</span><span class="fs-2"> 元</span><hr style="border: 2px solid rgb(223, 171, 27)" /></div></div><div class="col-md-8"><div class="card" style="width: auto"><img src="' + data.data[i]["Rimg"] + '" alt="" /></div></div></div></div></div></div>'
+                    $("#mybody").append(strHTML);
+                }
+            } else {
+                alert(data.message)
+            }
+        }
+        //form w3c
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + exdays * 24 * 60 * 1000);
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(";");
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == " ") {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+    </script>
+</body>
+
+</html>

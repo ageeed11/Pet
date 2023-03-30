@@ -1,0 +1,19 @@
+/* 全域 */
+:root{
+    --primary:#12aa56;
+}
+.bg-primary{
+    background-color:var(--primary);
+}
+/*區域*/
+.local{
+    --primary:#E8CAA4;
+}
+
+.box{
+    width: 200px;
+    height: 200px;
+    border: 20px solid #000;
+    box-sizing: border-box;
+}
+

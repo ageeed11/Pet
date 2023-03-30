@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>房型管理</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/color.css">
+
+    <script src="../js/check_member_state.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/jquery-3.6.1.min.js"></script>
+    <style>
+        .box1 {
+            background-color: aqua;
+        }
+
+        @media screen and (max-width: 768px) {
+            .table-rwd thead {
+                display: none;
+            }
+        }
+
+        .box {
+            width: 240px;
+            color: var(--p5);
+            border: 4px solid var(--p1);
+            padding: 15px;
+            margin: 15px;
+            border-radius: 15px;
+            /*圓角*/
+            font-weight: bolder;
+            /*文字粗體*/
+            box-shadow: var(--p12) 2px 2px 2px 2px;
+            /*陰影*/
+        }
+
+        body {
+            font-weight: 700;
+        }
+    </style>
+
+<body>
+    <nav class="navbar bg-light sticky-top">
+        <div class="container-fluid d-flex">
+            <button class="navbar-toggler me-2" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a href="../home/front_page.html"><button class="btn btn-outline-dark m-3 me-3">回網站首頁</button></a>
+            <a class="navbar-brand fs-3" href="#">佩特天旅後臺管理系統</a>
+            <div class="ms-auto">
+                <a href="#" class="btn btn-lg btn-outline-success " data-bs-toggle="modal"
+                    data-bs-target="#exampleModal-2" id="newdata_btn">新增房間資訊</a>
+            </div>
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+                aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">佩特天旅後臺管理系統</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../order/order_R.html">訂單確認</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../room/room_U.html">房型管理</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../report/20230215_contropanel_chart.html">數據報表</a>
+                        </li>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col">
+            </div>
+        </div>
+    </div>
+    <div class="container mt-4" id="mybody">
+        <div class="row">
+            <div class="col-12">
+                <div class="box " style="height: 100%; width: 100%;">
+                    <table class="table table-bordered table-striped table-hover caption-top table-sm table-rwd">
+                        <thead class="table-dark">
+                            <tr class="table-success">
+                                <th>編號</th>
+                                <th>房型名稱</th>
+                                <th>房型照片</th>
+                                <th>價格</th>
+                                <th>新增日期</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-th="編號"><span class="table-col">01</span></td>
+                                <td data-th="房型名稱"><span class="table-col">總統套房</span></td>
+                                <td><img src="" width="600x" alt="" class="img-fluid"></td>
+                                <td data-th="價格"><span class="table-col">1500</span></td>
+                                <td data-th="新增日期"><span class="table-col">20230105</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-end">
+                        <a href="#" class="btn btn-outline-secondary me-2" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal-1" id="updata_btn">更新</a>
+                        <a href="#" class="btn btn-outline-danger" id="delete_btn">刪除</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- newdateModal-2 新增房間資訊-->
+    <div class="modal fade " id="exampleModal-2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">新增房間資訊:</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="rname1">房型名稱</label>
+                    <input type="text" class="form-control" id="rname1" name="rname1" placeholder="房型名稱字數2~8">
+                    <div class="form-text" id="err_rname1"></div>
+                </div>
+                <!--  -->
+                <div class="modal-body mt-3">
+                    <label for="rimg1">房型照片</label>
+                    <form class="form-control">
+                        <input class="form-control" type="file" id="fileupload">
+                        <img src="" id="prevImg" class="w-100 my-3 d-none" alt="">
+                    </form>
+                </div>
+                <!--  -->
+                <div class="modal-body mt-3">
+                    <label for="rprice1">價格</label>
+                    <input type="text" class="form-control" id="rprice1" name="rprice1" placeholder="房型價格0~99999">
+                    <div class="form-text" id="err_rprice1"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="m_newdata_btn">確認新增</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- updateModal-1 房間資訊更新-->
+    <div class="modal fade" id="exampleModal-1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">房間資訊更新:</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="rname">房型名稱</label>
+                    <input type="text" class="form-control" id="rname" name="rname" placeholder="房型名稱字數2~8">
+                    <div class="form-text" id="err_rname"></div>
+                </div>
+                <!--  -->
+                <div class="modal-body mt-3">
+                    <label for="rimg">房型照片</label>
+                    <form class="form-control">
+                        <input class="form-control" type="file" id="fileupload_2">
+                        <img src="" id="prevImg2" class="w-100 my-3 " alt="">
+
+                    </form>
+                    <div class="form-text" id="err_rimg"></div>
+                </div>
+                <!--  -->
+                <div class="modal-body mt-3">
+                    <label for="rprice">價格</label>
+                    <input type="text" class="form-control" id="rprice" name="rprice" placeholder="房型價格0~99999">
+                    <div class="form-text" id="err_rprice"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="m_updata_btn">確認更新</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section style="background-color: #498eaf; height: 250px" class="mt-1">
+        <div class="container">
+            <div class="row">
+                <div class="box0001 col-md-3 mt-4">
+                    <h2>會員專區</h2>
+                    <ul>
+                        <div class="mt-3"><a href="../member/member_R.html" class="h5 text-d">會員中心</a></div>
+                        <div class="mt-2">
+                            <a href="../member/member_login.html" class="h5 text-d">會員登入</a>
+                        </div>
+                        <div class="mt-2"><a href="../member/member_R.html" class="h5 text-d">訂房紀錄</a></div>
+                        <div class="mt-2">
+                            <a href="../member/member_R.html" class="h5 text-d">修改會員資料</a>
+                        </div>
+                    </ul>
+                </div>
+
+                <div class="box0001 col-md-5 mt-4">
+                    <h2>Google MAP:</h2>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.034061749506!2d120.60793431317543!3d24.170538178517127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693e048d342aa9%3A0x2b6f18a6783fa3b!2z5Yue5YuV6YOo5Yue5YuV5Yqb55m85bGV572y5Lit5b2w5oqV5YiG572y77yI6Ie65Lit6IG36KiT5bGA77yJ!5e0!3m2!1szh-TW!2stw!4v1678602731779!5m2!1szh-TW!2stw"
+                        width="450px" height="150px" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+                <div class="box0001 mt-4 col-md-4">
+                    <h2>聯絡資訊</h2>
+                    <i class="ms-1 fs-5 fa-solid fa-location-dot"></i>
+                    <span class="h5">地址 : 台中市西屯區工業區一路100號</span>
+                    <br />
+                    <i class="ms-1 mt-3 fs-5 fa-solid fa-phone"></i>
+                    <span class="h5">電話 : 04-0000-0000</span>
+                    <br />
+                    <i class="ms-1 mt-3 fs-5 fa-solid fa-envelope"></i>
+                    <span class="h5">Email : test@gmail.com</span>
+                    <br />
+                    <i class="ms-1 mt-3 fs-5 fa-solid fa-clock"></i>
+                    <span class="h5">營業時間 : 09:00-20:00 (全年無休)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        var id;
+        var flag_rname = false;
+        var flag_rprice = false;
+        var flag_rnum = false;
+        var flag_upload = false //檔案是否符合規定
+
+        $(function () {
+            check_member_state();
+            $.ajax({
+                type: "GET",
+                url: "room_R_api.php", //去那裡獲得資料 ulr位址
+                dataType: "JSON", //資料型態
+                async: false, //先有資料再有畫面
+                success: showdata,
+                error: function () { //取得資料失敗 要顯示的錯誤訊息
+                    alert("error!-room_R_api.php");
+                }
+            });
+
+            //圖片上傳監聽
+            $("#fileupload").change(function () {
+                console.log(fileupload.files[0]);
+                console.log(fileupload.files[0].type);
+                if (fileupload.files[0].type == "image/png" || fileupload.files[0].type == "image/jpeg") {
+                    console.log("檔案格式符合");
+                    console.log(URL.createObjectURL(fileupload.files[0]));
+                    $("#prevImg").removeClass("d-none"); //圖片格式符合規定顯示預覽圖
+                    $("#prevImg").attr("src", URL.createObjectURL(fileupload.files[0]))
+                    flag_upload = true;
+                } else {
+                    console.log("檔案格式不符合");
+                    $("#prevImg").addClass("d-none"); //圖片格式不符合消失預覽圖
+                    flag_upload = false;
+                }
+            });
+
+
+            //更新按鈕監聽
+            $("#mybody #updata_btn").bind("click", function () {
+                console.log("test");
+                console.log($(this).data("id"));
+
+                id = $(this).data("id");
+                rname = $(this).data("rname");
+                rimg = $(this).data("rimg");
+                rprice = $(this).data("rprice");
+                created_at = $(this).data("created_at");
+
+                //把圖片帶入 model圖片更新
+                $("#prevImg2").attr("src", rimg);
+                $("#prevImg2").val(rimg);
+
+                $("#rname").val(rname);
+                $("#rprice").val(rprice);
+
+            });
+            //modal更新按鈕監聽
+            $("#m_updata_btn").bind("click", function () {
+                console.log("test01");
+                if (flag_upload) {
+                    var formData = new FormData();
+                    formData.append("ID", id);
+                    formData.append("file", fileupload_2.files[0]);
+                    formData.append("Rname", $("#rname").val());
+                    formData.append("Rprice", $("#rprice").val());
+
+                    $.ajax({
+                        type: "POST",
+                        url: "room_U_api.php",
+                        dataType: "JSON",
+                        data: formData,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        success: showdata_update,
+                        error: function () {
+                            alert("error_room_U_api.php");
+                        }
+                    });
+                } else {
+                    alert("檔案格式必須為png/jpeg");
+                }
+
+            });
+
+            // modal更新即時監聽
+            $("#rname").bind("input propertychange", function () {
+                if ($(this).val().length > 2 && $(this).val().length < 9) {
+                    //符合規則
+                    $("#err_rname").html("字數符合規則!");
+                    $("#err_rname").css("color", "green");
+                    flag_rname = true;
+                } else {
+                    $("#err_rname").html("字數不符合規則!");
+                    $("#err_rname").css("color", "red");
+                    flag_rname = false;
+                }
+            });
+
+            $("#rprice").bind("input propertychange", function () {
+                if ($(this).val() > 0 && $(this).val() < 99999) {
+                    //符合規則
+                    $("#err_rprice").html("價格符合規則!");
+                    $("#err_rprice").css("color", "green");
+                    flag_rprice = true;
+                } else {
+                    $("#err_rprice").html("價格不符合規則!");
+                    $("#err_rprice").css("color", "red");
+                    flag_rprice = false;
+                }
+            });
+            //圖片更新監聽
+            $("#fileupload_2").change(function () {
+                console.log(fileupload_2.files[0]);
+                console.log(fileupload_2.files[0].type);
+                if (fileupload_2.files[0].type == "image/png" || fileupload_2.files[0].type == "image/jpeg") {
+                    console.log("檔案格式符合");
+                    console.log(URL.createObjectURL(fileupload_2.files[0]));
+                    //圖片格式符合規定顯示預覽圖
+                    $("#prevImg2").attr("src", URL.createObjectURL(fileupload_2.files[0]))
+                    flag_upload = true;
+                } else {
+                    console.log("檔案格式不符合");
+                    $("#prevImg2").addClass("d-none"); //圖片格式不符合消失預覽圖
+                    flag_upload = false;
+                }
+            });
+
+
+
+            //刪除按鈕監聽
+            $("#mybody #delete_btn").bind("click", function () {
+                console.log($(this).data("id"));
+                if (confirm("確認刪除 id:" + $(this).data("id") + "?")) {
+                    console.log("ok");
+                    var jsonData = {};
+                    jsonData["ID"] = $(this).data("id");
+                    console.log(JSON.stringify(jsonData));
+                    $.ajax({
+                        type: "POST",
+                        url: "room_D_api.php",
+                        data: JSON.stringify(jsonData),
+                        dataType: "JSON",
+                        async: false,
+                        success: showdata_delete,
+                        error: function () {
+                            alert("error_room_D_api.php");
+                        }
+                    });
+                } else {
+                    console.log("not ok");
+                }
+            });
+
+            // modal新增按鈕即時監聽
+            $("#m_newdata_btn").bind("click", function () {
+                if (flag_rname && flag_rprice) {
+                    if (flag_upload) {
+                        console.log("ok");
+                        var formData = new FormData();
+                        formData.append("file", fileupload.files[0]);
+                        formData.append("Rname", $("#rname1").val());
+                        formData.append("Rprice", $("#rprice1").val());
+                        console.log(formData);
+
+                        $.ajax({
+                            type: "POST",
+                            url: "room_C_api.php",
+                            dataType: "JSON",
+                            data: formData,
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            success: newdata,
+                            error: function () {
+                                alert("error-room_C_api.php");
+                            }
+                        });
+                    } else {
+                        alert("未上傳圖片或檔案格式必須為png/jpeg");
+                    }
+                } else {
+
+                    alert("欄位有錯誤,請修正後送出!");
+                }
+
+            });
+            $("#rname1").bind("input propertychange", function () {
+                if ($(this).val().length > 2 && $(this).val().length < 9) {
+                    //符合規則
+                    $("#err_rname1").html("字數符合規則!");
+                    $("#err_rname1").css("color", "green");
+                    flag_rname = true;
+                } else {
+                    $("#err_rname1").html("字數不符合規則!");
+                    $("#err_rname1").css("color", "red");
+                    flag_rname = false;
+                }
+            });
+            $("#rprice1").bind("input propertychange", function () {
+                if ($(this).val() > 0 && $(this).val() < 100000) {
+                    //符合規則
+                    $("#err_rprice1").html("價格符合規則!");
+                    $("#err_rprice1").css("color", "green");
+                    flag_rprice = true;
+                } else {
+                    $("#err_rprice1").html("價格不符合規則!");
+                    $("#err_rprice1").css("color", "red");
+                    flag_rprice = false;
+                }
+            });
+
+
+        });
+        // 新增即時監聽 副程式
+        function newdata(data) {
+            console.log(data);
+            if (data.state) {
+                alert(data.message);
+                $("#rname1").val("");
+                $("#rprice1").val("");
+
+            } else {
+                alert(data.message);
+            }
+        }
+        function showdata(data) {
+            // console.log(data);//先測試是否讀取API資料成功
+            if (data.state) {
+                // alert(data.message); //消除資料
+                $("#mybody").empty();
+                for (var i = 0; i < data.data.length; i++) { //要注意大小寫要與資料庫一致
+                    var strHTML =
+                        '<div class="container mt-4 " id="mybody"><div class="row"><div class="col-12"><div class="box" style="height: 100%; width: 100%;"><table class="table table-bordered table-striped table-hover caption-top table-sm table-rwd"><thead class="table-dark"><tr class="table-success"><th>編號</th><th>房型名稱</th><th>房型照片</th><th>價格</th><th>新增日期</th></thead><tbody><tr><td data-th="編號"><span class="table-col">' + data.data[i]["ID"] + '</span></td><td data-th="房型名稱"><span class="table-col">' + data.data[i]["Rname"] + '</span></td><td><img src="' + data.data[i]["Rimg"] + '" width="600x" alt="" class="img-fluid"></td><td data-th="價格"><span class="table-col">' + data.data[i]["Rprice"] + '</span></td><td data-th="新增日期"><span class="table-col">' + data.data[i]["Created_at"] + '</span></td></tr></tbody></table><div class="text-end "><a href="#" class="btn btn-outline-secondary me-2" data-bs-toggle="modal" data-bs-target="#exampleModal-1" id="updata_btn" data-id="' + data.data[i]["ID"] + '" data-rname="' + data.data[i]["Rname"] + '" data-rprice="' + data.data[i]["Rprice"] + '" data-rimg="' + data.data[i]["Rimg"] + '">更新</a><a href="#" class="btn btn-outline-danger" data-id="' + data.data[i]["ID"] + '" id="delete_btn">刪除</a></div></div></div></div></div>'
+                    $("#mybody").append(strHTML);
+                }
+            } else {
+                alert(data.message)
+            }
+        }
+        function showdata_update(data) {
+            console.log(data);
+            if (data.state) {
+                alert(data.message);
+                location.href = "room_U.html";
+            } else {
+                alert(data.message);
+            }
+        }
+        function showdata_delete(data) {
+            console.log(data);
+            if (data.state) {
+                alert(data.message);
+                location.href = "room_U.html";
+            } else {
+                alert(data.message);
+            }
+        }
+        function newdata(data) {
+            console.log(data);
+            if (data.state) {
+                alert(data.message);
+                location.href = "room_U.html";
+            } else {
+                alert(data.message);
+            }
+        }
+    </script>
+</body>
+
+</html>

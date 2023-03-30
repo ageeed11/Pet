@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>線上訂房</title>
+  <link rel="stylesheet" href="../css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../css/color.css" />
+  <link rel="stylesheet" href="../css/all.min.css" />
+  <style>
+    .box {
+      border: 2px solid var(--black);
+      height: 80px;
+      line-height: 80px;
+      font-size: larger;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .box_th {
+      font-size: larger;
+      font-weight: bold;
+      text-align: center;
+      background-color: blanchedalmond;
+      border: 2px solid var(--black);
+      height: 50px;
+      line-height: 50px;
+      white-space: nowrap;
+    }
+
+    .box_hd {
+      border: 2px solid var(--black);
+      height: 50px;
+      line-height: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg sticky-top" style="background: #ead6bd">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold fs-2" href="../home/front_page.html">
+        <img src="../img/P0.png" alt="" style="width: 110px" /> 佩特天旅</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fw700">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="../home/Serving.html">服務項目</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="../room/room_R_show.html">房型介紹</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="../home/QA.html">住宿QA</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="../order/order_C.html">線上訂房</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" id="contropanel" style="display: none"
+              href="../order/order_R.html" target="_blank">後臺管理</a>
+          </li>
+        </ul>
+        <span class="text-primary fw-500 fs-5 me-2" id="login_member"></span>
+        <button class="btn btn-danger btn-sm" type="button" id="s2_logout_btn" style="display: none">
+          登出
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="container mt-3">
+    <div id="room_R">
+      <div class="row">
+        <div class="col-3">
+          <div class="row">
+            <div class="col-6 box_th border-bottom-0">入住日期</div>
+            <div class="col-6 box_th border-bottom-0 border-start-0">
+              訂購房型
+            </div>
+          </div>
+        </div>
+        <div class="col-9">
+          <div class="row">
+            <div class="col-2 box_th border-start-0 border-bottom-0">
+              訂購間數
+            </div>
+            <div class="col-2 box_th border-start-0 border-bottom-0">
+              房型定價
+            </div>
+            <div class="col-2 box_th border-start-0 border-bottom-0">
+              入住天數
+            </div>
+            <div class="col-2 box_th border-start-0 border-bottom-0">
+              接送(+600)
+            </div>
+            <div class="col-2 border-start-0 border-bottom-0 box_th">
+              美容(+1200)
+            </div>
+            <div class="col-2 box_th border-start-0 border-bottom-0">
+              小計
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <div class="row">
+            <div class="col-6 box">
+              <input type="date" id="or_input_day" name="or_input_day" min="2022-01-01" max="2030-12-31"
+                class="form-control" style="margin-top: 22px" />
+            </div>
+            <div class="col-6 box border-start-0">
+              <select name="select_room" id="select_room" class="form-select" style="margin-top: 22px" required>
+                <option value="精緻套房">精緻套房</option>
+                <option value="商務套房">商務套房</option>
+                <option value="總統套房">總統套房</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="col-9">
+          <div class="row">
+            <div class="col-2 box border-start-0">
+              <select name="select_num" id="select_num" class="form-select" style="margin-top: 22px" required>
+                <option selected disabled>請選擇間數</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+            <div class="col-2 box border-start-0" value="1500" id="select_price">
+              1500
+            </div>
+            <div class="col-2 box border-start-0">
+              <select name="select_day" id="select_day" class="form-select" style="margin-top: 22px" required>
+                <option selected disabled>請選擇天數</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+            <div class="col-2 box border-start-0">
+              <select name="select_pick" id="select_pick" class="form-select" style="margin-top: 22px" required>
+                <option selected disabled>請選擇接送</option>
+                <option value="0">無</option>
+                <option value="1200">需要</option>
+              </select>
+            </div>
+            <div class="col-2 box border-start-0">
+              <select name="select_cosmetology" id="select_cosmetology" class="form-select" style="margin-top: 22px"
+                required>
+                <option selected disabled>請選擇美容</option>
+                <option value="0">無</option>
+                <option value="1200">需要</option>
+              </select>
+            </div>
+            <div class="col-2 box border-start-0" id="select_sub" value="xxx"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div>
+      <a class="btn mt-3" style="border:none;"><i class="fa-solid fa-plus fs-1 text-danger " id="icons_add"></i></a>
+    </div> -->
+    <hr />
+
+    <div>
+      <div class="text-end">
+        <span class="h2">總計</span>
+        <span class="fs-3" id="total"></span>
+      </div>
+    </div>
+    <div id="member_R" class="mt-3">
+      <div class="row">
+        <div class="col-3 box_th border-bottom-0">姓名</div>
+        <div class="col-9">
+          <div class="row">
+            <div class="col-3 box_th border-bottom-0 border-start-0">
+              電話
+            </div>
+            <div class="col-3 box_th border-bottom-0 border-start-0">
+              EMAIL
+            </div>
+            <div class="col-3 box_th border-bottom-0 border-start-0">
+              地址
+            </div>
+            <div class="col-3 box_th border-bottom-0 border-start-0">
+              備註
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3 box">黃xx</div>
+        <div class="col-9">
+          <div class="row">
+            <div class="col-3 box border-start-0">09xx-xxx-xxx</div>
+            <div class="col-3 box border-start-0">ABC123@gamil</div>
+            <div class="col-3 box border-start-0">台中市西屯區</div>
+            <div class="col-3 box border-start-0">
+              <input type="text" name="mem_input" id="mem_input" class="form-control mt-3" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex">
+      <button type="button" class="btn btn-primary mt-3 ms-auto btn-lg" id="btn_conf">
+        訂單確認
+      </button>
+    </div>
+  </div>
+  <section style="background-color: #498eaf; height: 250px" class="mt-1">
+    <div class="container">
+      <div class="row">
+        <div class="box0001 col-md-3 mt-4">
+          <h2>會員專區</h2>
+          <ul>
+            <div class="mt-3">
+              <a href="../member/member_R.html" class="h5 text-d">會員中心</a>
+            </div>
+            <div class="mt-2">
+              <a href="../member/member_login.html" class="h5 text-d">會員登入</a>
+            </div>
+            <div class="mt-2">
+              <a href="../member/member_R.html" class="h5 text-d">訂房紀錄</a>
+            </div>
+            <div class="mt-2">
+              <a href="../member/member_R.html" class="h5 text-d">修改會員資料</a>
+            </div>
+          </ul>
+        </div>
+
+        <div class="box0001 col-md-5 mt-4">
+          <h2>Google MAP:</h2>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.034061749506!2d120.60793431317543!3d24.170538178517127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693e048d342aa9%3A0x2b6f18a6783fa3b!2z5Yue5YuV6YOo5Yue5YuV5Yqb55m85bGV572y5Lit5b2w5oqV5YiG572y77yI6Ie65Lit6IG36KiT5bGA77yJ!5e0!3m2!1szh-TW!2stw!4v1678602731779!5m2!1szh-TW!2stw"
+            width="450px" height="150px" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <div class="box0001 mt-4 col-md-4">
+          <h2>聯絡資訊</h2>
+          <i class="ms-1 fs-5 fa-solid fa-location-dot"></i>
+          <span class="h5">地址 : 台中市西屯區工業區一路100號</span>
+          <br />
+          <i class="ms-1 mt-3 fs-5 fa-solid fa-phone"></i>
+          <span class="h5">電話 : 04-0000-0000</span>
+          <br />
+          <i class="ms-1 mt-3 fs-5 fa-solid fa-envelope"></i>
+          <span class="h5">Email : test@gmail.com</span>
+          <br />
+          <i class="ms-1 mt-3 fs-5 fa-solid fa-clock"></i>
+          <span class="h5">營業時間 : 09:00-20:00 (全年無休)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="../js/jquery-3.6.1.min.js"></script>
+  <script src="../js/check_member_state.js"></script>
+  <script>
+    var num = 1;
+    var price = 1;
+    var day = 1;
+    var pick = 0;
+    var cosmetology = 0;
+    var sub; //小計
+    var rname; //訂購房型
+    var OUID; //儲存id
+    var remark = ""; //先預設為空字串
+    $(function () {
+      //會員登入狀態確認
+      if (getCookie("MUID01") != "" && getCookie("MUID02") != "") {
+        //傳遞至後端驗證UID
+        var JSONdata = {};
+        JSONdata["uid01"] = getCookie("MUID01");
+        JSONdata["uid02"] = getCookie("MUID02");
+        // console.log(JSON.stringify(JSONdata));
+        $.ajax({
+          type: "POST",
+          url: "mem_uid_check_api.php",
+          dataType: "json",
+          data: JSON.stringify(JSONdata),
+          async: false, //渲染要關閉非同步
+          success: showdata_uid_check,
+          erroe: function () {
+            alert("err-mem_uid_check_api.php");
+          },
+        });
+      } else {
+        location.href = "../member/member_login.html";
+      }
+
+      $.ajax({
+        type: "GET",
+        url: "room_R_api.php",
+        dataType: "json",
+        async: false, //先有資料再有畫面
+        success: showdata_room_r,
+        error: function () {
+          alert("error-room_R_api");
+        },
+      });
+
+      //監聽訂購間數
+      $("#select_num").change(function () {
+        console.log($(this).val());
+        num = $(this).val();
+        num = parseInt(num);
+        console.log(num);
+        set_sub();
+      });
+      //監聽入住日期
+      $("or_input_day").bind("click", function () {
+        console.log("test");
+      });
+      //監聽入住天數
+      $("#select_day").change(function () {
+        console.log($(this).val());
+        day = $(this).val();
+        day = parseInt(day);
+        console.log(day);
+        set_sub();
+      });
+      //監聽接送
+      $("#select_pick").change(function () {
+        console.log($(this).val());
+        pick = $(this).val();
+        pick = parseInt(pick);
+
+        // if ($(this).val() == "需要") {
+        //   pick = 600;
+        //   console.log(pick);
+        // }
+        // else if ( $("#select_pick").val() == "無") {
+        //   pick = 0;
+        //   console.log(pick);
+        // }
+        set_sub();
+      });
+      //監聽美容
+      $("#select_cosmetology").change(function () {
+        console.log($(this).val());
+        cosmetology = $(this).val();
+        cosmetology = parseInt(cosmetology);
+
+        // if ($(this).val() == "需要") {
+        //   cosmetology = 1200;
+        //   console.log(cosmetology);
+        // }
+        // else if ($("#select_cosmetology").val() == "無") {
+        //   cosmetology = 0;
+        //   console.log(cosmetology);
+        // }
+        set_sub();
+      });
+      //監聽入住日期
+      $("#or_input_day").change(function () {
+        console.log($(this).val());
+      });
+      //備註監聽
+      $("#mem_input").change(function () {
+        console.log($(this).val());
+
+        remark = $(this).val();
+      });
+
+      //訂單確認按鈕觸發事件
+
+      $("#btn_conf").bind("click", function () {
+        console.log("tset");
+        if (
+          rname != "" &&
+          price != "" &&
+          $("#or_input_day").val() != "" &&
+          num != "" &&
+          day != "" &&
+          sub != ""
+        ) {
+          var JSONdata = {};
+          JSONdata["orname"] = rname;
+          JSONdata["orprice"] = price;
+          JSONdata["odate"] = $("#or_input_day").val();
+          JSONdata["onum"] = num;
+          JSONdata["oday"] = day;
+          JSONdata["opick"] = pick;
+          JSONdata["ocos"] = cosmetology;
+          JSONdata["oremark"] = remark;
+          JSONdata["ototal"] = sub;
+          JSONdata["ouid"] = OUID;
+          console.log(JSON.stringify(JSONdata));
+          $.ajax({
+            type: "POST",
+            url: "order_C_api.php",
+            dataType: "json",
+            data: JSON.stringify(JSONdata),
+            async: false, //先有資料再有畫面
+            success: showdata_ord_C,
+            error: function () {
+              alert("error-order_C_api.php");
+            },
+          });
+        } else {
+          alert("欄位不得空白");
+        }
+      });
+
+      //登出按鈕s2_logout_btn監聽
+      $("#s2_logout_btn").bind("click", function () {
+        console.log("test");
+        setCookie("MUID01", "", 7);
+        setCookie("MUID02", "", 7);
+        location.href = "../home/front_page.html";
+      });
+    });
+
+    function showdata_room_r(data) {
+      console.log(data);
+      //渲染訂購房型
+      $("#select_room").empty();
+      $("#select_room").append(
+        "<option selected disabled>請選擇房型</option>"
+      );
+      data.data.forEach(function (item) {
+        var strHTML =
+          '<option value="' + item.Rname + '">' + item.Rname + "</option>";
+        $("#select_room").append(strHTML);
+      });
+      //監聽訂購房型
+      $("#select_room").change(function () {
+        console.log($(this).val());
+        rname = $(this).val();
+        data.data.find(function (item) {
+          if (item.Rname == rname) {
+            console.log(item.Rprice);
+            $("#select_price").text(item.Rprice);
+            $("#select_price").val(item.Rprice);
+            price = $("#select_price").val();
+            price = parseInt(price); //字串轉整數
+            set_sub();
+          }
+        });
+      });
+    }
+    function showdata_ord_C(data) {
+      console.log(data);
+      if (data.state) {
+        alert("訂單新增成功");
+        location.href = "../member/member_R.html";
+      } else {
+      }
+    }
+    //設定小計
+    function set_sub() {
+      sub = price * num * day + pick + cosmetology;
+      console.log(sub);
+      $("#select_sub").text(sub);
+      $("#select_sub").val(sub);
+      //總計
+      $("#total").text("");
+      $("#total").text(sub);
+    }
+    //UID check
+    function showdata_uid_check(data) {
+      //UID驗證合法
+      //顯示會員帳號相關訊息
+      $("#login_member").text(data.data[0].Mname + "會員您好!");
+
+      //顯示登出按鈕
+      $("#s2_logout_btn").show();
+      //秀出後台管理
+      if (data.data[0].Mname == "admin") {
+        $("#contropanel").show();
+      }
+      console.log(data);
+      $("#member_R").empty();
+      data.data.forEach(function (item) {
+        var srcHTML =
+          ' <div id="member_R" class="mt-3"><div class="row "><div class="col-3  box_th border-bottom-0">姓名</div><div class="col-9"><div class="row"><div class="col-3 box_th border-bottom-0 border-start-0">電話</div><div class="col-3 box_th border-bottom-0 border-start-0">EMAIL</div><div class="col-3 box_th border-bottom-0 border-start-0">地址</div><div class="col-3 box_th border-bottom-0 border-start-0">備註</div></div> </div></div><div class="row" ><div class="col-3 box">' +
+          item.Mname +
+          '</div><div class="col-9 "><div class="row"><div class="col-3 box  border-start-0">' +
+          item.Mphone +
+          '</div><div class="col-3 box border-start-0">' +
+          item.Mail +
+          '</div><div class="col-3 box border-start-0">' +
+          item.Map +
+          '</div><div class="col-3 box border-start-0"><input type="text" name="mem_input" id="mem_input"  class="form-control mt-3"></div></div></div></div></div>';
+
+        $("#member_R").append(srcHTML);
+        OUID = item.ID;
+        console.log(OUID);
+      });
+    }
+    function setCookie(cname, cvalue, exdays) {
+      const d = new Date();
+      d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+      let expires = "expires=" + d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(";");
+      for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == " ") {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+  </script>
+</body>
+
+</html>
